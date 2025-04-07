@@ -1,0 +1,12 @@
+import { sendPushNotification } from "../src/firebaseadmin";
+
+export const reportDisaster = async (req: Request, res: Response) => {
+  const newDisaster = new Disaster(req.body);
+  await newDisaster.save();
+
+  // Notify users via Push Notifications
+  const message = New disaster alert: ${newDisaster.name} at ${newDisaster.location};
+  await sendPushNotification("USER_FCM_TOKEN", "Disaster Alert", message);
+
+  res.status(201).json(newDisaster);
+};

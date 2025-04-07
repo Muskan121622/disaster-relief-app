@@ -1,0 +1,6 @@
+/* src/styles/mapStyles.css */
+
+.leaflet-routing-container {
+    display: none !important;
+  }
+  /* styles/mapStyles.css */
