@@ -8,7 +8,7 @@ import { approveDonation, getUsers } from "../controllers/admin.controller";
 import authMiddleware from "../middleware/authmiddleware";
 import { adminMiddleware } from "../middleware/adminmiddleware";
 
-import { sendNotification } from "../controllers/notificationcontroller";
+//import { sendNotification } from "../controllers/notificationcontroller";
 
 import {  getDonations,getTotalDonations } from "../controllers/admin.controller";
 
@@ -26,7 +26,7 @@ router.post("/login", adminLogin);
 router.put("/approve-donation/:id", authMiddleware, adminMiddleware, approveDonation);
 router.get("/users", authMiddleware, adminMiddleware, getUsers);
 router.get("/notifications",  getNotifications);
-router.post("/send-notification/:disasterId", sendNotification);
+//router.post("/send-notification/:disasterId", sendNotification);
 // Route to get the total donations amount
 router.get("/donations/total", getTotalDonations);
 router.get("/volunteers", getAdminVolunteerDetails);
