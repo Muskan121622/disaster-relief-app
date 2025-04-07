@@ -431,7 +431,7 @@ const ManageUsers = () => {
     const fetchData = async () => {
       try {
         // Fetch Donations
-        const donationsRes = await axios.get("http://localhost:1217/api/v1/admin/donations");
+        const donationsRes = await axios.get("https://disaster-relief-app-3.onrender.com/api/v1/admin/donations");
         if (Array.isArray(donationsRes.data)) {
           setDonations(donationsRes.data);
         } else {
@@ -439,7 +439,7 @@ const ManageUsers = () => {
         }
 
         // Fetch Volunteers
-        const volunteersRes = await axios.get("http://localhost:1217/api/v1/admin/volunteers");
+        const volunteersRes = await axios.get("https://disaster-relief-app-3.onrender.com/api/v1/admin/volunteers");
         if (Array.isArray(volunteersRes.data)) {
           setVolunteers(volunteersRes.data);
         } else {

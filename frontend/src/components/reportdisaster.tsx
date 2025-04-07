@@ -3778,7 +3778,7 @@ const ReportDisaster: React.FC = () => {
     images.forEach((img) => data.append("images", img));
 
     try {
-      await axios.post("http://localhost:1217/api/v1/disasters/report", data, {
+      await axios.post("https://disaster-relief-app-3.onrender.com/api/v1/disasters/report", data, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       alert("Disaster reported successfully!");

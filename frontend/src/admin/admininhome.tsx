@@ -223,10 +223,10 @@ const AdminHome = () => {
         }
 
         const [usersResponse, donationsResponse] = await Promise.all([
-          axios.get("http://localhost:1217/api/v1/admin/users", {
+          axios.get("https://disaster-relief-app-3.onrender.com/api/v1/admin/users", {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          axios.get("http://localhost:1217/api/v1/admin/donations/total", {
+          axios.get("https://disaster-relief-app-3.onrender.com/api/v1/admin/donations/total", {
             headers: { Authorization: `Bearer ${token}` },
           }),
         ]);

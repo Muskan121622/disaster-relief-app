@@ -634,7 +634,7 @@ const ManageDonations = () => {
   useEffect(() => {
     const fetchDonations = async () => {
       try {
-        const response = await axios.get("http://localhost:1217/api/v1/admin/donations");
+        const response = await axios.get("https://disaster-relief-app-3.onrender.com/api/v1/admin/donations");
         if (Array.isArray(response.data)) {
           setDonations(response.data);
         } else {
@@ -665,7 +665,7 @@ const ManageDonations = () => {
 
       // Send the PUT request with the Authorization header
       await axios.put(
-        `http://localhost:1217/api/v1/admin/approve-donation/${id}`,
+        `https://disaster-relief-app-3.onrender.com/api/v1/admin/approve-donation/${id}`,
         {},
         {
           headers: {

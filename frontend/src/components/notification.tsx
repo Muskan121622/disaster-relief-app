@@ -271,7 +271,7 @@ const Notifications = () => {
     }
 
     try {
-      await axios.post("http://localhost:1217/api/v1/notifications/send", {
+      await axios.post("https://disaster-relief-app-3.onrender.com/api/v1/notifications/send", {
         token: firebaseToken,
         ...formData,
       });

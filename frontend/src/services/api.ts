@@ -2,7 +2,7 @@
 import axios from "axios";
 
 // Define the API base URL (update this to match your backend server)
-const API_BASE_URL = "http://localhost:1217/api/v1";
+const API_BASE_URL = "https://disaster-relief-app-3.onrender.com/api/v1";
 
 // Create an Axios instance
 const api = axios.create({

@@ -76,7 +76,7 @@ function App() {
   // ✅ Function to send token to backend
   const sendTokenToServer = async (token: string) => {
     try {
-      await fetch("http://localhost:1217/api/v1/notifications/send", {
+      await fetch("https://disaster-relief-app-3.onrender.com/api/v1/notifications/send", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

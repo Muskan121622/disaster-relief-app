@@ -382,7 +382,7 @@ const DisasterReported = () => {
     const fetchDisasters = async () => {
       try {
         const response = await axios.get<{ success: boolean; data: Disaster[] }>(
-          "http://localhost:1217/api/v1/disasters"
+          "https://disaster-relief-app-3.onrender.com/api/v1/disasters"
         );
 
         if (response.data.success) {

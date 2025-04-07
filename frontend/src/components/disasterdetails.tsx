@@ -1230,7 +1230,7 @@ const DisasterDetails = () => {
     const fetchDisaster = async () => {
       try {
         const response = await axios.get<{ success: boolean; data: Disaster }>(
-          `http://localhost:1217/api/v1/disasters/${id}`
+          `https://disaster-relief-app-3.onrender.com/api/v1/disasters/${id}`
         );
         if (response.data.success) {
           setDisaster(response.data.data);
@@ -1305,7 +1305,7 @@ const DisasterDetails = () => {
             {disaster.images.map((image, index) => (
               <div key={index}>
                 <img
-                  src={`http://localhost:1217${image}`}
+                  src={`https://disaster-relief-app-3.onrender.com${image}`}
                   alt={`Disaster ${index + 1}`}
                   className="w-full h-56 object-cover rounded-md"
                 />

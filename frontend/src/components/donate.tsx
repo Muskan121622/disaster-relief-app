@@ -1669,7 +1669,7 @@ const CreateDonationPage: React.FC = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:1217/api/v1/user/me", {
+      .get("https://disaster-relief-app-3.onrender.com/api/v1/user/me", {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       })
       .then((res) => setUser(res.data.user))
@@ -1679,7 +1679,7 @@ const CreateDonationPage: React.FC = () => {
   useEffect(() => {
     if (type === "food") {
       axios
-        .get("http://localhost:1217/api/v1/disasters/active")
+        .get("https://disaster-relief-app-3.onrender.com/api/v1/disasters/active")
         .then((res) => setDisasters(res.data.disasters))
         .catch((err) => console.error("Error fetching disasters", err));
     }
@@ -1697,7 +1697,7 @@ const CreateDonationPage: React.FC = () => {
           ? { type, phone, disasterId }
           : { type, amount, phone };
 
-      await axios.post("http://localhost:1217/api/v1/user/donate", payload, {
+      await axios.post("https://disaster-relief-app-3.onrender.com/api/v1/user/donate", payload, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
 

@@ -266,7 +266,7 @@ const Donations = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    axios.get("http://localhost:1217/api/v1/user/donations", {
+    axios.get("https://disaster-relief-app-3.onrender.com/api/v1/user/donations", {
       headers: { Authorization: `Bearer ${token}` }
     })
     .then((res) => setDonations(res.data))

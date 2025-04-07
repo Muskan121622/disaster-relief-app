@@ -25,7 +25,7 @@ const AdminSignup = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:1217/api/v1/admin/signup", {
+      await axios.post("https://disaster-relief-app-3.onrender.com/api/v1/admin/signup", {
         name,
         email,
         password,

@@ -943,7 +943,7 @@ const HomePage = () => {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   useEffect(() => {
-    axios.get("http://localhost:1217/api/v1/disasters").then((res) => {
+    axios.get("https://disaster-relief-app-3.onrender.com/api/v1/disasters").then((res) => {
       setDisasters(res.data.data);
     });
   }, []);
@@ -957,7 +957,7 @@ const HomePage = () => {
 
     setLoading(true);
     try {
-      const response = await axios.post("http://localhost:1217/api/v1/subscribe", { email });
+      const response = await axios.post("https://disaster-relief-app-3.onrender.com/api/v1/subscribe", { email });
       toast.success(response.data.message || "Subscribed successfully!");
       setEmail(""); // Clear input after subscribing
     } catch (error) {

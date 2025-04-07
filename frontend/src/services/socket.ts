@@ -1,6 +1,6 @@
 import { io } from "socket.io-client";
 
-const SOCKET_URL = "ws://localhost:1217"; // Ensure WebSocket protocol (ws://)
+const SOCKET_URL = "ws://disaster-relief-app-3.onrender.com"; // Ensure WebSocket protocol (ws://)
 
 const socket = io(SOCKET_URL, {
   transports: ["websocket"],

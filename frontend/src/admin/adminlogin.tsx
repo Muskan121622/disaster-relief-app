@@ -62,7 +62,7 @@ const handleLogin = async (e: React.FormEvent) => {
     setLoading(true);
   
     try {
-      const response = await fetch("http://localhost:1217/api/v1/admin/login", {
+      const response = await fetch("https://disaster-relief-app-3.onrender.com/api/v1/admin/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
