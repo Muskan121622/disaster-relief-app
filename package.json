@@ -3,6 +3,7 @@
     "firebase": "^11.5.0",
     "git-filter-repo": "^0.0.30",
     "leaflet": "^1.9.4",
+    "leaflet-geosearch": "^4.2.0",
     "react-leaflet": "^5.0.0"
   },
   "devDependencies": {
