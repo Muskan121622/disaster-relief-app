@@ -53,7 +53,7 @@ const app = express();
 
 
 // Middleware
-app.use(cors({ origin: "http://localhost:5183", credentials: true })); // ✅ Allow frontend
+app.use(cors({ origin: "https://disaster-relief-app-f54z.vercel.app/", credentials: true })); // ✅ Allow frontend
 app.use(express.json()); // To parse JSON request bodies
 
 app.use(express.urlencoded({ extended: true }));
@@ -157,7 +157,7 @@ const server = http.createServer(app);
 
 export const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5183", // ✅ Allow frontend
+    origin: "https://disaster-relief-app-f54z.vercel.app", // ✅ Allow frontend
     methods: ["GET", "POST"],
     credentials: true,
   },
