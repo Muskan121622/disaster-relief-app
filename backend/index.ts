@@ -53,7 +53,39 @@ const app = express();
 
 
 // Middleware
-app.use(cors({ origin: "https://disaster-relief-app-f54z.vercel.app", credentials: true })); // ✅ Allow frontend
+// app.use(cors({ origin: "https://disaster-relief-app-f54z.vercel.app", credentials: true })); // ✅ Allow frontend
+
+
+
+const allowedOrigins = [
+  "http://localhost:5183", // local dev
+  "https://disaster-relief-app-f54z.vercel.app", // vercel prod
+];
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  })
+);
+
+
+
+
+
+
+
+
+
+
+
+
 app.use(express.json()); // To parse JSON request bodies
 
 app.use(express.urlencoded({ extended: true }));
