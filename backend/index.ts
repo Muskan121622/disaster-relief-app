@@ -53,7 +53,7 @@ const app = express();
 
 
 // Middleware
-app.use(cors({ origin: "https://disaster-relief-app-f54z.vercel.app/", credentials: true })); // ✅ Allow frontend
+app.use(cors({ origin: "https://disaster-relief-app-f54z.vercel.app", credentials: true })); // ✅ Allow frontend
 app.use(express.json()); // To parse JSON request bodies
 
 app.use(express.urlencoded({ extended: true }));
