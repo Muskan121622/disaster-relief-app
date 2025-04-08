@@ -57,7 +57,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   // ✅ Login function
   const login = async (email: string, password: string) => {
     try {
-      const response = await fetch("http://localhost:1217/api/v1/admin/login", {
+      const response = await fetch("https://disaster-relief-app-3.onrender.com/api/v1/admin/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),

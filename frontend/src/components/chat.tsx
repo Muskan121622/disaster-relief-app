@@ -435,7 +435,7 @@ const Chat = () => {
   const [isOpen, setIsOpen] = useState(false); // Toggle chat box
 
   useEffect(() => {
-    const newSocket = io("http://localhost:5183");
+    const newSocket = io("https://disaster-relief-app-3.onrender.com");
     setSocket(newSocket);
 
     // Load chat history
