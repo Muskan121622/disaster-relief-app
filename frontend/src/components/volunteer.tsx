@@ -1724,8 +1724,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Select from "react-select";
 import { FaUser, FaPhone, FaMapMarkerAlt, FaHome } from "react-icons/fa";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+
 
 const skillOptions = [
   { value: "first aid", label: "First Aid" },
@@ -1772,7 +1771,8 @@ const VolunteerRegistration: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Submitted:", formData);
-    toast.success("Submitted successfully!");
+    alert("Submitted successfully!");
+   
   };
 
   return (
@@ -1825,7 +1825,7 @@ const VolunteerRegistration: React.FC = () => {
       <button onClick={() => navigate("/dashboard")} className="mt-4 bg-blue-500 text-white py-2 px-6 rounded-lg text-lg font-medium">
         Back to Dashboard
       </button>
-      <ToastContainer position="top-center" autoClose={3000} />
+      
     </div>
   );
 };
