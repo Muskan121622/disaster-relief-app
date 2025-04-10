@@ -1301,65 +1301,160 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <div className="bg-gradient-to-r from-purple-600 via-pink-600 to-red-500 min-h-screen flex flex-col items-center p-0 relative">
-      {/* Top Navigation */}
-      <div className="w-full sticky top-0 z-50 bg-gradient-to-r from-indigo-700 via-indigo-800 to-indigo-900 p-4 text-center flex justify-between items-center">
-        <button 
-          className="bg-white text-black px-6 py-2 rounded-lg shadow-xl hover:bg-gray-200 transition"
-          onClick={() => navigate("/")}
-        >
-          Home
-        </button>
-        <h2 className="text-3xl font-bold text-white">Disaster Management</h2>
-        <Chat />
-      </div>
+    // <div className="bg-gradient-to-r from-purple-600 via-pink-600 to-red-500 min-h-screen flex flex-col items-center p-0 relative">
+    //   {/* Top Navigation */}
+    //   <div className="w-full sticky top-0 z-50 bg-gradient-to-r from-indigo-700 via-indigo-800 to-indigo-900 p-4 text-center flex justify-between items-center">
+    //     <button 
+    //       className="bg-white text-black px-6 py-2 rounded-lg shadow-xl hover:bg-gray-200 transition"
+    //       onClick={() => navigate("/")}
+    //     >
+    //       Home
+    //     </button>
+    //     <h2 className="text-3xl font-bold text-white">Disaster Management</h2>
+    //     <Chat />
+    //   </div>
 
-      {/* Notification Component (Styled Floating Box - Top Right) */}
-      <div className="absolute mt-12 top-6 right-6">
-        <div className="bg-white/20 backdrop-blur-md border border-white/30 shadow-lg p-4 rounded-xl w-72">
-          <h3 className="text-white font-semibold text-lg mb-2">📢 Notifications</h3>
-          <Notifications />
+    //   {/* Notification Component (Styled Floating Box - Top Right) */}
+    //   <div className="absolute mt-12 top-6 right-6">
+    //     <div className="bg-white/20 backdrop-blur-md border border-white/30 shadow-lg p-4 rounded-xl w-72">
+    //       <h3 className="text-white font-semibold text-lg mb-2">📢 Notifications</h3>
+    //       <Notifications />
+    //     </div>
+    //   </div>
+
+    //   {loading ? (
+    //     <p className="text-white text-lg text-center mt-10 animate-pulse">Loading data...</p>
+    //   ) : (
+    //     <>
+    //       {/* Statistics Boxes */}
+    //       <div className="flex justify-center space-x-6 mt-6">
+    //         <div className="text-center bg-white p-6 rounded-2xl shadow-2xl w-52 cursor-pointer hover:scale-105 transition-transform transform hover:bg-red-100"   onClick={() => navigate("/disasters")}>
+    //           <h3 className="text-lg font-semibold text-red-600">Disasters Registered</h3>
+    //           <p className="text-4xl font-bold text-red-600">{disasters.length}</p>
+    //         </div>
+    //         <div className="text-center bg-white p-6 rounded-2xl shadow-2xl w-52 cursor-pointer hover:scale-105 transition-transform transform hover:bg-green-100"onClick={() => navigate("/donation")}>
+    //           <h3 className="text-lg font-semibold text-green-600">Donations</h3>
+    //           <p className="text-4xl font-bold text-green-600">{donations.length}</p>
+    //         </div>
+    //         <div className="text-center bg-white p-6 rounded-2xl shadow-2xl w-52 cursor-pointer hover:scale-105 transition-transform transform hover:bg-blue-100"onClick={() => navigate("/volunteers")}>
+    //           <h3 className="text-lg font-semibold text-blue-600">Volunteers Registered</h3>
+    //           <p className="text-4xl font-bold text-blue-600">{volunteers.length}</p>
+    //         </div>
+    //       </div>
+
+    //       {/* Action Buttons */}
+    //       <div className="grid grid-cols-2 gap-4 mt-8 w-full max-w-lg">
+    //         <div className="bg-gray-200 p-4 rounded-lg text-center shadow-md cursor-pointer hover:bg-gray-300 transition-transform transform hover:scale-105" onClick={() => navigate("/report-disaster")}>
+    //           Report Disaster
+    //         </div>
+    //         <div className="bg-gray-200 p-4 rounded-lg text-center shadow-md cursor-pointer hover:bg-gray-300 transition-transform transform hover:scale-105" onClick={() => navigate("/disasters")}>
+    //           Disaster Reported
+    //         </div>
+    //         <div className="bg-gray-200 p-4 rounded-lg text-center shadow-md cursor-pointer hover:bg-gray-300 transition-transform transform hover:scale-105" onClick={() => navigate("/volunteer-registration")}>
+    //           Volunteer Registration
+    //         </div>
+    //         <div className="bg-gray-200 p-4 rounded-lg text-center shadow-md cursor-pointer hover:bg-gray-300 transition-transform transform hover:scale-105" onClick={() => navigate("/map")}>
+    //           Maps
+    //         </div>
+    //       </div>
+    //     </>
+    //   )}
+    // </div>
+
+
+
+
+
+
+
+    
+      <div className="bg-gradient-to-r from-purple-600 via-pink-600 to-red-500 min-h-screen flex flex-col items-center p-2 sm:p-4 relative">
+        {/* Top Navigation */}
+        <div className="w-full sticky top-0 z-50 bg-gradient-to-r from-indigo-700 via-indigo-800 to-indigo-900 px-4 py-3 flex justify-between items-center flex-wrap">
+          <button
+            className="bg-white text-black px-4 py-2 rounded-lg shadow hover:bg-gray-200 transition text-sm sm:text-base"
+            onClick={() => navigate("/")}
+          >
+            Home
+          </button>
+          <h2 className="text-xl sm:text-3xl font-bold text-white text-center flex-1 sm:flex-none">
+            Disaster Management
+          </h2>
+          <div className="mt-2 sm:mt-0">
+            <Chat />
+          </div>
         </div>
+    
+        {/* Notification Component (Responsive position for mobile) */}
+        <div className="fixed top-20 right-4 w-11/12 sm:w-72 z-40">
+          <div className="bg-white/20 backdrop-blur-md border border-white/30 shadow-lg p-4 rounded-xl">
+            <h3 className="text-white font-semibold text-lg mb-2">📢 Notifications</h3>
+            <Notifications />
+          </div>
+        </div>
+    
+        {/* Loading */}
+        {loading ? (
+          <p className="text-white text-lg text-center mt-10 animate-pulse">Loading data...</p>
+        ) : (
+          <>
+            {/* Statistics Boxes */}
+            <div className="flex flex-col sm:flex-row sm:justify-center sm:space-x-6 space-y-4 sm:space-y-0 mt-6">
+              <div
+                className="text-center bg-white p-6 rounded-2xl shadow-2xl w-full sm:w-52 cursor-pointer hover:scale-105 transition"
+                onClick={() => navigate("/disasters")}
+              >
+                <h3 className="text-lg font-semibold text-red-600">Disasters Registered</h3>
+                <p className="text-4xl font-bold text-red-600">{disasters.length}</p>
+              </div>
+              <div
+                className="text-center bg-white p-6 rounded-2xl shadow-2xl w-full sm:w-52 cursor-pointer hover:scale-105 transition"
+                onClick={() => navigate("/donation")}
+              >
+                <h3 className="text-lg font-semibold text-green-600">Donations</h3>
+                <p className="text-4xl font-bold text-green-600">{donations.length}</p>
+              </div>
+              <div
+                className="text-center bg-white p-6 rounded-2xl shadow-2xl w-full sm:w-52 cursor-pointer hover:scale-105 transition"
+                onClick={() => navigate("/volunteers")}
+              >
+                <h3 className="text-lg font-semibold text-blue-600">Volunteers Registered</h3>
+                <p className="text-4xl font-bold text-blue-600">{volunteers.length}</p>
+              </div>
+            </div>
+    
+            {/* Action Buttons */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8 w-full max-w-lg px-2">
+              <div
+                className="bg-gray-200 p-4 rounded-lg text-center shadow-md cursor-pointer hover:bg-gray-300 transition-transform transform hover:scale-105"
+                onClick={() => navigate("/report-disaster")}
+              >
+                Report Disaster
+              </div>
+              <div
+                className="bg-gray-200 p-4 rounded-lg text-center shadow-md cursor-pointer hover:bg-gray-300 transition-transform transform hover:scale-105"
+                onClick={() => navigate("/disasters")}
+              >
+                Disaster Reported
+              </div>
+              <div
+                className="bg-gray-200 p-4 rounded-lg text-center shadow-md cursor-pointer hover:bg-gray-300 transition-transform transform hover:scale-105"
+                onClick={() => navigate("/volunteer-registration")}
+              >
+                Volunteer Registration
+              </div>
+              <div
+                className="bg-gray-200 p-4 rounded-lg text-center shadow-md cursor-pointer hover:bg-gray-300 transition-transform transform hover:scale-105"
+                onClick={() => navigate("/map")}
+              >
+                Maps
+              </div>
+            </div>
+          </>
+        )}
       </div>
-
-      {loading ? (
-        <p className="text-white text-lg text-center mt-10 animate-pulse">Loading data...</p>
-      ) : (
-        <>
-          {/* Statistics Boxes */}
-          <div className="flex justify-center space-x-6 mt-6">
-            <div className="text-center bg-white p-6 rounded-2xl shadow-2xl w-52 cursor-pointer hover:scale-105 transition-transform transform hover:bg-red-100"   onClick={() => navigate("/disasters")}>
-              <h3 className="text-lg font-semibold text-red-600">Disasters Registered</h3>
-              <p className="text-4xl font-bold text-red-600">{disasters.length}</p>
-            </div>
-            <div className="text-center bg-white p-6 rounded-2xl shadow-2xl w-52 cursor-pointer hover:scale-105 transition-transform transform hover:bg-green-100"onClick={() => navigate("/donation")}>
-              <h3 className="text-lg font-semibold text-green-600">Donations</h3>
-              <p className="text-4xl font-bold text-green-600">{donations.length}</p>
-            </div>
-            <div className="text-center bg-white p-6 rounded-2xl shadow-2xl w-52 cursor-pointer hover:scale-105 transition-transform transform hover:bg-blue-100"onClick={() => navigate("/volunteers")}>
-              <h3 className="text-lg font-semibold text-blue-600">Volunteers Registered</h3>
-              <p className="text-4xl font-bold text-blue-600">{volunteers.length}</p>
-            </div>
-          </div>
-
-          {/* Action Buttons */}
-          <div className="grid grid-cols-2 gap-4 mt-8 w-full max-w-lg">
-            <div className="bg-gray-200 p-4 rounded-lg text-center shadow-md cursor-pointer hover:bg-gray-300 transition-transform transform hover:scale-105" onClick={() => navigate("/report-disaster")}>
-              Report Disaster
-            </div>
-            <div className="bg-gray-200 p-4 rounded-lg text-center shadow-md cursor-pointer hover:bg-gray-300 transition-transform transform hover:scale-105" onClick={() => navigate("/disasters")}>
-              Disaster Reported
-            </div>
-            <div className="bg-gray-200 p-4 rounded-lg text-center shadow-md cursor-pointer hover:bg-gray-300 transition-transform transform hover:scale-105" onClick={() => navigate("/volunteer-registration")}>
-              Volunteer Registration
-            </div>
-            <div className="bg-gray-200 p-4 rounded-lg text-center shadow-md cursor-pointer hover:bg-gray-300 transition-transform transform hover:scale-105" onClick={() => navigate("/map")}>
-              Maps
-            </div>
-          </div>
-        </>
-      )}
-    </div>
+  
+    
   );
 };
 

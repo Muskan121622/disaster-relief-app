@@ -34,7 +34,7 @@
 
 
 // import { Request, Response } from "express";
-// import { sendPushNotification } from "../src/firebaseadmin"; // Import Firebase function
+ //import { sendPushNotification } from "../src/firebaseadmin"; // Import Firebase function
 // import { Notification } from "../models/notification.model"; // Import Notification model
 
 
@@ -59,7 +59,7 @@
 //     }
 
 //     // ✅ Send the push notification via Firebase
-//     await sendPushNotification(token, title, body);
+//     //await sendPushNotification(token, title, body);
 
 //     // ✅ Save the notification in MongoDB
 //     const notification = new Notification({ title, body });
