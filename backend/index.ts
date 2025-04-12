@@ -9,7 +9,7 @@ import disasterRoutes from "./routes/disaster.route";
 import donationRoutes from "./routes/donation.routes";
 import volunteerRoutes from "./routes/volunteer.routes";
 import adminroutes from "./routes/admin.route";
-//import notificationRoutes from "./routes/notifications.route";
+import notificationRoutes from "./routes/notifications.route";
 import { Chat } from "./models/chatmodel";
 import bodyParser from "body-parser";
 import multer from "multer";
@@ -249,7 +249,7 @@ app.use("/api/v1", subscribeRoutes);
 //console.log("👀 paymentRoutes:", paymentRoutes);
 
 //app.use('/api/v1/payments', paymentRoutes);
-//app.use("/api/v1/notifications", notificationRoutes);
+app.use("/api/v1/notifications", notificationRoutes);
 // Check if routes are registered
 // app._router.stack.forEach((middleware: any) => {
 //   if (middleware.route) {
