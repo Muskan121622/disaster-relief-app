@@ -61,23 +61,7 @@ const Login = () => {
   return (
     <div className="flex justify-center items-center h-screen bg-gradient-to-r from-indigo-700 to-amber-500 relative">
       
-      {/* <motion.pre
-        className=" text-6xl absolute left-12 top-20 font-bold text-lime-500"
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1.5 }}
-      >
-        Make It {"\n"}
-       
-      
-        Work,Make it <br />
-
-        right,Make 
-         it
-        
-         <br /> {"\n"} Fast!!! :)
-         
-      </motion.pre> */}
+   
 
       {/* Center Content */}
       <div className="flex flex-col justify-center items-center">

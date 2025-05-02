@@ -10,53 +10,6 @@ const AdminLogin = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
 
-
-
-
-
-
-//   const handleLogin = async (e: React.FormEvent) => {
-//     e.preventDefault();
-//     setLoading(true);
-  
-//     try {
-//       const response = await fetch("http://localhost:1217/api/v1/admin/login", {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify({ email, password }),
-//       });
-  
-//       const data = await response.json();
-//       console.log("Admin Login Response:", data); // 🔍 Debugging Step
-  
-//       if (response.ok) {
-//         localStorage.setItem("token", data.token); // ✅ Store token manually
-//         localStorage.setItem("user", JSON.stringify(data.admin)); // ✅ Store user details
-//         toast.success("🚀 Login successful!");
-//         navigate("/admin");
-//       } else {
-//         toast.error(data.message || "❌ Invalid credentials");
-//       }
-//     } catch (error) {
-//       console.error("Login error:", error);
-//       toast.error("⚠️ Something went wrong. Try again.");
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
-  
-
-
-
-
-
-
-
-
-
-
 const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -92,46 +45,6 @@ const handleLogin = async (e: React.FormEvent) => {
       setLoading(false);
     }
   };
-  
-
-
-
-
-
-
-
-
-
-
-
-
-//   const handleLogin = async (e: React.FormEvent) => {
-//     e.preventDefault();
-//     setLoading(true);
-
-//     try {
-//       const response = await fetch("http://localhost:1217/api/v1/admin/login", {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify({ email, password }),
-//       });
-
-//       const data = await response.json();
-//       if (response.ok) {
-//         login(data.token, data.admin); // Save admin session
-//         toast.success("🚀 Login successful!");
-//         navigate("/admin");
-//       } else {
-//         toast.error(data.message || "❌ Invalid credentials");
-//       }
-//     } catch (error) {
-//       toast.error("⚠️ Something went wrong. Try again.");
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-6">

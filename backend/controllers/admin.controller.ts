@@ -11,9 +11,6 @@ import { Admin } from "../models/admin.model";
 const  JWT_SECRET = process.env.JWT_SECRET as string;
  
 
-
-
-
 // ✅ Admin Signup
 export const adminSignup = async (req: Request, res: Response): Promise<void> => {
     try {
@@ -70,21 +67,6 @@ export const adminLogin = async (req: Request, res: Response): Promise<void> => 
 };
   
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import { broadcastUpdate } from "../index";
   
 
@@ -139,25 +121,6 @@ export const getNotifications = async (req: Request, res: Response): Promise<voi
   };
 
 
-
-
-
-  
-  // Get all donations (with only necessary fields)
-//   export const getDonations = async (req: Request, res: Response) => {
-//     try {
-//       const donations = await Donation.find().populate("donor", "name email");
-//       // Extract only the monetary amounts (assuming the donation model has an 'amount' field)
-//       const donationAmounts = donations.map(donation => donation.amount);
-//       res.json(donationAmounts); // Return an array of donation amounts
-//     } catch (error) {
-//       res.status(500).json({ error: "Failed to fetch donations" });
-//     }
-//   };
-  
-
-
-
 export const getDonations= async (req: Request, res: Response) => {
     try {
       const donations = await Donation.find().populate("donor", "name email");
@@ -167,14 +130,6 @@ export const getDonations= async (req: Request, res: Response) => {
     }
   };
   
-
-
-
-
-
-
-
-
   // Get total donations amount
   export const getTotalDonations = async (req: Request, res: Response) => {
     try {
@@ -187,24 +142,6 @@ export const getDonations= async (req: Request, res: Response) => {
     }
   };
   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   import { getVolunteerDetails as fetchVolunteerDetails } from "../controllers/volunteer.controller";
 
   // Function to get volunteer details from Volunteer Controller
@@ -216,69 +153,4 @@ export const getDonations= async (req: Request, res: Response) => {
       res.status(500).json({ error: "Failed to fetch volunteer details" });
     }
   };
-
-
-
-
-
-
-
-
-
-
-
-
-// import admin from "firebase-admin";
-// import Disaster from "../models/disaster.model";
-
-// import asyncHandler from "express-async-handler";
-
-// // Initialize Firebase Admin SDK (ensure you have a service account JSON file)
-// admin.initializeApp({
-//   credential: admin.credential.cert(require("../config/firebase-service-account.json")),
-// });
-
-// // Admin sends a notification to the user who reported a disaster
-// export const sendNotificationToReporter = asyncHandler(async (req: Request, res: Response) => {
-//   const { disasterId, messageTitle, messageBody } = req.body;
-
-//   if (!disasterId || !messageTitle || !messageBody) {
-//     res.status(400);
-//     throw new Error("Missing required fields");
-//   }
-
-//   // Find disaster and the user who reported it
-//   const disaster = await Disaster.findById(disasterId).populate("reportedBy");
-//   if (!disaster || !disaster.reportedBy) {
-//     res.status(404);
-//     throw new Error("Disaster or reporter not found");
-//   }
-
-//   const user = await User.findById(disaster.reportedBy);
-//   if (!user || !user.fcmToken) {
-//     res.status(400);
-//     throw new Error("User has no FCM token");
-//   }
-
-//   // Construct push notification
-//   const message = {
-//     token: user.fcmToken,
-//     notification: {
-//       title: messageTitle,
-//       body: messageBody,
-//     },
-//   };
-
-//   try {
-//     await admin.messaging().send(message);
-//     console.log(`Notification sent to ${user.name}`);
-//   } catch (error) {
-//     console.error("Error sending notification:", error);
-//   }
-
-//   res.status(200).json({
-//     success: true,
-//     message: "Notification sent successfully",
-//   });
-// });
 

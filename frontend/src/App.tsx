@@ -46,10 +46,6 @@ const ProtectedRoute = ({ children, redirectPath }: { children: ReactNode; redir
   return user ? <>{children}</> : <Navigate to={redirectPath} replace />;
 };
 
-
-
-
-
 function App() {
   const [firebaseToken, setFirebaseToken] = useState<string | null>(null);
 

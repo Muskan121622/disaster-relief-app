@@ -8,8 +8,6 @@ dotenv.config();
 
 
 const JWT_SECRET = process.env.JWT_SECRET as string;
-
-
 export const register = async (req: Request, res: Response) => {
     try {
       const { name, email, password, role } = req.body;
@@ -24,11 +22,6 @@ export const register = async (req: Request, res: Response) => {
       res.status(500).json({ error: "Registration failed" });
     }
   };
-
-
-
-
-
 
 import asyncHandler from "express-async-handler";
 
