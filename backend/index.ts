@@ -56,42 +56,83 @@ export const io = new Server(server, {
 });
 
 // WebSocket connection handling
-io.on("connection", (socket) => {
-  console.log("🔌 A user connected:", socket.id);
+// io.on("connection", (socket) => {
+//   console.log("🔌 A user connected:", socket.id);
 
-  // Debugging - Log received messages
-  socket.onAny((event, ...args) => {
-    console.log(`📩 Received Event: ${event}`, args);
-  });
+//   // Debugging - Log received messages
+//   socket.onAny((event, ...args) => {
+//     console.log(`📩 Received Event: ${event}`, args);
+//   });
 
-  socket.on("disconnect", () => {
-    console.log("❌ User disconnected:", socket.id);
-  });
-  socket.on("typing", () => {
-    socket.broadcast.emit("userTyping");
-  });
+//   socket.on("disconnect", () => {
+//     console.log("❌ User disconnected:", socket.id);
+//   });
+//   socket.on("typing", () => {
+//     socket.broadcast.emit("userTyping");
+//   });
   
 
-  socket.emit("serverMessage", "Hello from backend!");
-});
+//   socket.emit("serverMessage", "Hello from backend!");
+// });
+// io.on("connection", async (socket) => {
+//   console.log("User connected to chat");
+
+//   // Send previous chat history
+//   const chatHistory = await Chat.find().sort({ timestamp: 1 });
+//   socket.emit("chatHistory", chatHistory);
+
+//   socket.on("sendMessage", async ({ sender, message }) => {
+//     const newMessage = new Chat({ sender, message });
+//     await newMessage.save();
+
+//     io.emit("receiveMessage", newMessage);
+//   });
+
+//   socket.on("disconnect", () => {
+//     console.log("User disconnected");
+//   });
+// });
+
 io.on("connection", async (socket) => {
-  console.log("User connected to chat");
+  console.log("🔌 A user connected:", socket.id);
 
   // Send previous chat history
   const chatHistory = await Chat.find().sort({ timestamp: 1 });
   socket.emit("chatHistory", chatHistory);
 
+  // Debugging
+  socket.onAny((event, ...args) => {
+    console.log(`📩 Event: ${event}`, args);
+  });
+
+  // Handle messages
   socket.on("sendMessage", async ({ sender, message }) => {
     const newMessage = new Chat({ sender, message });
     await newMessage.save();
-
     io.emit("receiveMessage", newMessage);
   });
 
+  // Typing indicator
+  socket.on("typing", () => {
+    socket.broadcast.emit("userTyping");
+  });
+
+  socket.emit("serverMessage", "Hello from backend!");
+
   socket.on("disconnect", () => {
-    console.log("User disconnected");
+    console.log("❌ User disconnected:", socket.id);
   });
 });
+
+
+
+
+
+
+
+
+
+
 
 // Emit updates when donations/volunteers change
 export const broadcastUpdate = (event: string, data: any) => {
