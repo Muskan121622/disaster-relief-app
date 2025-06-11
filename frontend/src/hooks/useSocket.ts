@@ -37,7 +37,8 @@ export const useSocket = () => {
   useEffect(() => {
     const newSocket = io(SOCKET_SERVER_URL, {
       transports: ["websocket"], // ✅ Force WebSocket only
-      reconnectionAttempts: 3,   // Optional: limit retries
+      reconnectionAttempts: 3,
+      timeout: 10000,   // Optional: limit retries
     });
 
     setSocket(newSocket);
