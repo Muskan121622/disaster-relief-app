@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
@@ -6,7 +5,6 @@ import type { LatLngExpression } from "leaflet";
 import socket from "../services/socket";
 import { disasterService } from "../services/api";
 import "../utils/fixLeaflet"; // 👈 Fix leaflet marker icons
-
 type Disaster = {
   id: number;
   lat: number;
@@ -14,7 +12,6 @@ type Disaster = {
   name: string;
   location: string;
 };
-
 const DisasterMap = () => {
   const [disasters, setDisasters] = useState<Disaster[]>([]);
   const center: LatLngExpression = [37.7749, -122.4194];
@@ -85,5 +82,4 @@ const DisasterMap = () => {
     </MapContainer>
   );
 };
-
 export default DisasterMap;

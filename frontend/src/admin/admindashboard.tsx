@@ -3,10 +3,8 @@ import React from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; // Import the toastify styles
-
 const AdminDashboard = () => {
   const navigate = useNavigate(); // To handle programmatic navigation
-
   const handleLogout = () => {
     // Show toast notification
     toast.success("Logged out successfully!", {

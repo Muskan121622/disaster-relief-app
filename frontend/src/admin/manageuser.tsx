@@ -1,8 +1,6 @@
-
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
-
 interface Donation {
   _id: string;
   amount: number;
@@ -12,7 +10,6 @@ interface Donation {
   };
   status: string;
 }
-
 interface Volunteer {
   _id: string;
   user: {
@@ -24,14 +21,12 @@ interface Volunteer {
   availability: string;
   status: string;
 }
-
 const ManageUsers = () => {
   const navigate = useNavigate(); // Initialize useNavigate
   const [donations, setDonations] = useState<Donation[]>([]);
   const [volunteers, setVolunteers] = useState<Volunteer[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -76,7 +71,6 @@ const ManageUsers = () => {
       </div>
     );
   }
-
   return (
     <div className="min-h-screen bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-6">
       <div className="max-w-5xl mx-auto bg-white p-8 rounded-lg shadow-2xl">

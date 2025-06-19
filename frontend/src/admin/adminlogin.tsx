@@ -2,18 +2,15 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../context/authcontext";
 import toast from "react-hot-toast";
-
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const { login } = useAuth();
   const navigate = useNavigate();
-
 const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-  
     try {
       const response = await fetch("https://disaster-relief-app-3.onrender.com/api/v1/admin/login", {
         method: "POST",
@@ -22,10 +19,8 @@ const handleLogin = async (e: React.FormEvent) => {
         },
         body: JSON.stringify({ email, password }),
       });
-  
       const data = await response.json();
       console.log("Admin Login Response:", data); // 🔍 Debugging Step
-  
       if (response.ok) {
         localStorage.setItem("token", data.token); // ✅ Store token manually
         localStorage.setItem("user", JSON.stringify(data.admin)); // ✅ Store user details
@@ -93,5 +88,4 @@ const handleLogin = async (e: React.FormEvent) => {
     </div>
   );
 };
-
 export default AdminLogin;

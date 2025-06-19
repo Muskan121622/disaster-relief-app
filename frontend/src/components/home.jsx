@@ -90,14 +90,6 @@ const HomePage = () => {
         <p className="text-lg italic mt-4">"This platform saved our lives during the flood. Thank you!" - A survivor</p>
       </section>
 
-      
-
-
-
-
-
-
-
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-8 px-6 flex flex-col md:flex-row justify-between items-center">
         <div className="text-center md:w-1/3 mx-auto">

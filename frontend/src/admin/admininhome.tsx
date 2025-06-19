@@ -2,13 +2,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
 const AdminHome = () => {
   const [stats, setStats] = useState({ donations: 0, users: 0 });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const navigate = useNavigate();
-
   useEffect(() => {
     const fetchStats = async () => {
       try {
@@ -19,7 +17,6 @@ const AdminHome = () => {
           setTimeout(() => navigate("/login"), 1500);
           return;
         }
-
         const [usersResponse, donationsResponse] = await Promise.all([
           axios.get("https://disaster-relief-app-3.onrender.com/api/v1/admin/users", {
             headers: { Authorization: `Bearer ${token}` },
@@ -28,7 +25,6 @@ const AdminHome = () => {
             headers: { Authorization: `Bearer ${token}` },
           }),
         ]);
-
         setStats({
           donations: donationsResponse.data.totalDonations || 0,
           users: usersResponse.data.length || 0,

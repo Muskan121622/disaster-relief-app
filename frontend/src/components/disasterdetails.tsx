@@ -1,11 +1,9 @@
-
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "leaflet/dist/leaflet.css";
-
 interface Disaster {
   id: string;
   name: string;
@@ -15,7 +13,6 @@ interface Disaster {
   images: string[];
   status: string;
 }
-
 const DisasterDetails = () => {
   const { id } = useParams<{ id: string }>();
   const [disaster, setDisaster] = useState<Disaster | null>(null);

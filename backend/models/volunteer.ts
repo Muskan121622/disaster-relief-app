@@ -10,7 +10,6 @@ interface IVolunteer extends Document {
   skills: string[];
   availability: string;
 }
-
 const VolunteerSchema = new Schema<IVolunteer>({
   user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
   name: { type: String, required: true },

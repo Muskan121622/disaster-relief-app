@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-
 interface IDonation extends mongoose.Document {
   donor: mongoose.Schema.Types.ObjectId;
   type: "money" | "supplies" | "food";
@@ -7,7 +6,6 @@ interface IDonation extends mongoose.Document {
   phone?: string;
   status: "pending" | "approved" | "delivered";
 }
-
 const DonationSchema = new mongoose.Schema<IDonation>({
   donor: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
   type: { type: String, enum: ["money", "supplies", "food"], required: true },

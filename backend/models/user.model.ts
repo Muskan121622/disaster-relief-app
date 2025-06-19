@@ -1,6 +1,5 @@
 
 import mongoose from "mongoose";
-
 interface IUser extends mongoose.Document {
   name: string;
   email: string;
@@ -8,7 +7,6 @@ interface IUser extends mongoose.Document {
   role: "donor" | "volunteer" | "organization";
   //fcmToken?: string; // ✅ Add fcmToken as an optional field
 }
-
 const UserSchema = new mongoose.Schema<IUser>({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },

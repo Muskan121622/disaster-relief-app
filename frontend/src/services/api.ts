@@ -20,16 +20,6 @@ api.interceptors.request.use((config) => {
   }
   return config;
 });
-
-
-
-
-
-
-
-
-
-
 // ✅ Handle Unauthorized (401) responses
 api.interceptors.response.use(
   (response) => response, // ✅ Return the response if successful
@@ -44,19 +34,6 @@ api.interceptors.response.use(
     return Promise.reject(error);
   }
 );
-
-
-
-
-
-
-
-
-
-
-
-
-
 // AuthService for authentication
 export const authService = {
   register: async (data: { name: string; email: string; password: string; role?: string }) => {
@@ -97,17 +74,6 @@ export const authService = {
     localStorage.removeItem("user");
   }
 };
-
-
-
-
-
-
-
-
-
-
-
 //adminservice
 export const adminService = {
   register: async (data: { name: string; email: string; password: string; role?: string }) => {
@@ -134,16 +100,7 @@ export const adminService = {
   },
 
   approveDonation: async (id: string,token:string) => {
-    // try {
-    //   const response = await api.put(`/admin/approve-donation/${id}`);
-    //   return response.data;
-    // } catch (error: any) {
-    //   console.error(`❌ Error approving donation (ID: ${id}):`, error.response?.data || error.message);
-    //   throw error.response?.data || "Failed to approve donation";
-    // }
-
-
-
+  
     try {
       const response = await api.put("/admin/approve-donation/${id}", {
         headers: { Authorization: `Bearer ${token}` },
@@ -154,13 +111,7 @@ export const adminService = {
       throw error.response?.data || "Failed to approve donation";
     }
 
-
-
-
   },
-
-
-
   getProfile: async () => {
     try {
       const response = await api.get("/admin/profile");
@@ -176,17 +127,6 @@ export const adminService = {
     localStorage.removeItem("user");
   }
 };
-
-
-
-
-
-
-
-
-
-
-
 // ✅ UserService for fetching users
 export const userService = {
   getUsers: async (token: string) => {
@@ -241,20 +181,6 @@ export const donationService1 = {
       throw error.response?.data || "Failed to fetch donations";
     }
   }  ,
-   
-  // // ✅ Fixed approveDonation API route
-  // approveDonation: async (id: string) => {
-  //   try {
-  //     const response = await api.put(`/admin/approve-donation/${id}`);
-  //     return response.data;
-  //   } catch (error: any) {
-  //     throw error.response?.data || "Failed to approve donation";
-  //   }
-  // } 
-
-
-
-
 
 };
 
@@ -270,13 +196,6 @@ export const disasterService = {
     }
   }
 };
-
-
-
-
-
-
-
 // VolunteerService for volunteer-related APIs
 export const volunteerService = {
   registerVolunteer: async (data: { name: string; email: string; phone: string }) => {

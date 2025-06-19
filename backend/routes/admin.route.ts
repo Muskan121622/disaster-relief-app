@@ -1,27 +1,16 @@
 
 import { adminSignup, adminLogin } from "../controllers/admin.controller";
-
 import { getNotifications } from "../controllers/admin.controller";
-
 import express from "express";
 import { approveDonation, getUsers } from "../controllers/admin.controller";
 import authMiddleware from "../middleware/authmiddleware";
 import { adminMiddleware } from "../middleware/adminmiddleware";
-
-//import { sendNotification } from "../controllers/notificationcontroller";
-
 import {  getDonations,getTotalDonations } from "../controllers/admin.controller";
-
-
 import { getAdminVolunteerDetails } from "../controllers/admin.controller";
-
-
 const router = express.Router();
 // ✅ Admin Authentication Routes
 router.post("/signup", adminSignup);
 router.post("/login", adminLogin);
-
-
 // Approve a donation (Admin Only)
 router.put("/approve-donation/:id", authMiddleware, adminMiddleware, approveDonation);
 router.get("/users", authMiddleware, adminMiddleware, getUsers);

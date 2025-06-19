@@ -1,30 +1,4 @@
-// // src/hooks/useSocket.ts
-// import { useEffect, useState } from "react";
-// import { io, Socket } from "socket.io-client";
-// const SOCKET_SERVER_URL = import.meta.env.VITE_SOCKET_SERVER_URL;
 
-// export const useSocket = () => {
-//   const [socket, setSocket] = useState<Socket | null>(null);
-//   const [connected, setConnected] = useState(false);
-
- 
-//   useEffect(() => {
-//     const newSocket = io(SOCKET_SERVER_URL);
-//     setSocket(newSocket);
-
-//     newSocket.on("connect", () => setConnected(true));
-//     newSocket.on("disconnect", () => setConnected(false));
-
-//     return () => {
-//       newSocket.disconnect();
-//     };
-//   }, []);
-
-//   return { socket, connected };
-// };
-
-
-// src/hooks/useSocket.ts
 import { useEffect, useState } from "react";
 import { io, Socket } from "socket.io-client";
 

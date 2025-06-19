@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
 interface Disaster {
   id: string;
   name: string;
@@ -11,7 +10,6 @@ interface Disaster {
   type: string;
   images: string[];
 }
-
 const DisasterReported = () => {
   const [disasters, setDisasters] = useState<Disaster[]>([]);
   const [loading, setLoading] = useState(true);

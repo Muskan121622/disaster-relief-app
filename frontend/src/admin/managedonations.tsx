@@ -4,14 +4,12 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 interface Donation {
   _id: string;
   name: string;
   amount: number;
   status: string;
 }
-
 const ManageDonations = () => {
   const navigate = useNavigate();
   const [donations, setDonations] = useState<Donation[]>([]);

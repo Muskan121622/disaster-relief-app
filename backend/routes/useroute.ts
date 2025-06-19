@@ -2,9 +2,7 @@ import express from "express";
 import { body } from "express-validator";
 import {  login } from "../controllers/user.controllers";
 import { register } from "../controllers/user.controllers";
-
 const router = express.Router();
-
 // Validation middleware
 const validateRegister = [
   body("name").notEmpty().withMessage("Name is required"),

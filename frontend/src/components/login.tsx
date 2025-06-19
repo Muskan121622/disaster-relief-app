@@ -60,9 +60,6 @@ const Login = () => {
 
   return (
     <div className="flex justify-center items-center h-screen bg-gradient-to-r from-indigo-700 to-amber-500 relative">
-      
-   
-
       {/* Center Content */}
       <div className="flex flex-col justify-center items-center">
         {/* Welcome Back */}

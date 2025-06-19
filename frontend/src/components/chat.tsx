@@ -1,25 +1,19 @@
-
 import { useState, useEffect } from "react";
 import { io, Socket } from "socket.io-client";
 import { MessageCircle, X } from "lucide-react";
-
 const sender = "User"; // Change this to actual user name
-
 const Chat = () => {
   const [messages, setMessages] = useState<{ sender: string; message: string }[]>([]);
   const [message, setMessage] = useState("");
   const [socket, setSocket] = useState<Socket | null>(null);
   const [isOpen, setIsOpen] = useState(false); // Toggle chat box
-
   useEffect(() => {
     const newSocket = io("https://disaster-relief-app-3.onrender.com");
     setSocket(newSocket);
-
     // Load chat history
     newSocket.on("chatHistory", (history) => {
       setMessages(history);
     });
-
     // Listen for new messages
     newSocket.on("receiveMessage", (newMessage: { sender: string; message: string }) => {
       setMessages((prev) => [...prev, newMessage]);

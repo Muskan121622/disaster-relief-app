@@ -1,12 +1,10 @@
 import mongoose, { Schema, Document } from "mongoose";
-
 // Define Notification interface
 export interface INotification extends Document {
   title: string;
   body: string;
   createdAt: Date;
 }
-
 // Define Mongoose Schema
 const NotificationSchema = new Schema<INotification>(
   {

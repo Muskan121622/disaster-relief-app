@@ -1,8 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
-
 const JWT_SECRET = process.env.JWT_SECRET as string;
-
 // Define user structure
 interface UserPayload {
   id: string;

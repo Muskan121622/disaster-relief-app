@@ -37,7 +37,6 @@ const tileOptions = {
       '&copy; <a href="https://www.maptiler.com/">MapTiler</a>, &copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
   },
 };
-
 const DisasterRouteMap = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -46,10 +45,8 @@ const DisasterRouteMap = () => {
     name: string;
     location: string;
   };
-
   const [userLocation, setUserLocation] = useState<[number, number] | null>(null);
   const [geoError, setGeoError] = useState<string | null>(null);
-
   useEffect(() => {
     const fetchLocation = async () => {
       if (!navigator.geolocation) {

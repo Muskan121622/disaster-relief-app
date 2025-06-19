@@ -1,8 +1,5 @@
-// adminLogout.tsx or inside any component (like AdminDashboard.tsx)
-
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-
 const AdminLogout = () => {
   const navigate = useNavigate();
 
@@ -24,5 +21,4 @@ const AdminLogout = () => {
     </button>
   );
 };
-
 export default AdminLogout;

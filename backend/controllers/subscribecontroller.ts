@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import Subscription from "../models/subscribe.model";
-
 export const subscribe = async (req: Request, res: Response): Promise<void> => {
   try {
     const { email } = req.body;

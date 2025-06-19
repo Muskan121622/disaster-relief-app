@@ -1,13 +1,11 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
 type Suggestion = {
   display_name: string;
   lat: string;
   lon: string;
 };
-
 const AddressInput = ({
   formData,
   setFormData,
@@ -94,5 +92,4 @@ const AddressInput = ({
     </div>
   );
 };
-
 export default AddressInput;

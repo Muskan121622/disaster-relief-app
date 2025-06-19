@@ -1,9 +1,7 @@
 import twilio from "twilio";
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
-
 dotenv.config(); // ✅ Load .env variables
-
 // ✅ Twilio setup
 const client = twilio(process.env.TWILIO_SID, process.env.TWILIO_AUTH_TOKEN);
 const twilioPhone = process.env.TWILIO_PHONE || "+1234567890"; // Default fallback

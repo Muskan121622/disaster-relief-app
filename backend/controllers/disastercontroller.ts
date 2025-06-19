@@ -1,6 +1,5 @@
 
 // disaster.controller.ts
-
 import { Request, Response } from "express";
 import Disaster from "../models/disaster.model";
 import multer from "multer";

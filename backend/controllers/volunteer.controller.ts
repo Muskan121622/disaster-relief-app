@@ -2,7 +2,6 @@ import { Request, Response } from "express";
  import {Volunteer } from "../models/volunteer"
 import { User } from "../models/user.model";
 import { broadcastUpdate } from "../index";
-
 interface AuthRequest extends Request {
   user?: { id: string }; // Ensuring req.user exists from authMiddleware
 }

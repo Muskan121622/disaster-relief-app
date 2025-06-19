@@ -1,16 +1,13 @@
-
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Bell, Loader2, AlertCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-
 interface Notification {
   _id: string;
   title: string;
   body: string;
   createdAt: string;
 }
-
 const Notifications = () => {
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [loading, setLoading] = useState<boolean>(true);

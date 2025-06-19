@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 import socket from "../services/socket";
 import Chat from "../components/chat";
 import Notifications from "../components/notification"; // Import Notifications Component
-
 const Dashboard = () => {
   const [donations, setDonations] = useState<any[]>([]);
   const [volunteers, setVolunteers] = useState<any[]>([]);
@@ -141,8 +140,6 @@ const Dashboard = () => {
           </>
         )}
       </div>
-  
-    
   );
 };
 

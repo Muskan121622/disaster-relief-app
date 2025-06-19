@@ -1,6 +1,5 @@
 
 import mongoose, { Schema, Document } from "mongoose";
-
 export interface IDisaster extends Document {
   name: string;
   location: string;
@@ -11,7 +10,6 @@ export interface IDisaster extends Document {
   reportedAt: Date;
   //reportedBy: mongoose.Schema.Types.ObjectId; // ✅ Store user ID of the reporter
 }
-
 const DisasterSchema = new Schema<IDisaster>({
   name: { type: String, required: true },
   location: { type: String, required: true },

@@ -64,19 +64,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
- 
-
- 
-
-
-
-
-
-
-
-
-
-
   // Update user and token in state + localStorage
   const updateUser = (user: User | null) => {
     setUser(user);
