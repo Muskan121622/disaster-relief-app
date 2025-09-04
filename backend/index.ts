@@ -20,7 +20,7 @@ import subscribeRoutes from "./routes/subscribe.route"
 dotenv.config();
 const app = express();
 // Middleware
- app.use(cors({ origin: "https://disaster-relief-app-f54z.vercel.app", credentials: true })); // ✅ Allow frontend
+ app.use(cors({ origin: ["https://disaster-relief-app-f54z.vercel.app", "http://localhost:5173"], credentials: true })); // ✅ Allow frontend
 app.use(express.json()); // To parse JSON request bodies
 
 app.use(express.urlencoded({ extended: true }));
@@ -32,7 +32,7 @@ const server = http.createServer(app);
 
 export const io = new Server(server, {
   cors: {
-    origin: "https://disaster-relief-app-f54z.vercel.app", // ✅ Allow frontend
+    origin: ["https://disaster-relief-app-f54z.vercel.app", "http://localhost:5173"], // ✅ Allow frontend
     methods: ["GET", "POST"],
     credentials: true,
   },

@@ -76,27 +76,196 @@ const VolunteerDetails: React.FC = () => {
   };
 
   return (
-    <div className="p-4 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 min-h-screen text-white">
-      <h1 className="text-3xl font-extrabold mb-6 text-center">Volunteer Details</h1>
-      {loading && <p className="text-center">Loading...</p>}
-      {error && <p className="text-yellow-300 text-center">{error}</p>}
-      <div className="max-w-4xl mx-auto">
-        {volunteers.map((volunteer) => (
-          <div key={volunteer._id} className="bg-white shadow-lg rounded-lg p-6 mb-6 text-gray-900 border-l-8 border-blue-500">
-            <h2 className="text-2xl font-bold text-blue-700">{volunteer.name || volunteer.user.name}</h2>
-            <p className="text-gray-700 font-semibold">Email: {volunteer.user.email}</p>
-            <p className="text-gray-700 font-semibold">Phone: {volunteer.phone || "N/A"}</p>
-            <p className="text-gray-700 font-semibold">Location: {volunteer.state || "N/A"}, {volunteer.district || "N/A"}</p>
-            <p className="text-gray-700 font-semibold">Address: {volunteer.address || "N/A"}</p>
-            <p className="text-gray-700 font-semibold">Skills: {volunteer.skills.join(", ")}</p>
-            <p className="text-gray-700 font-semibold">Availability: {volunteer.availability}</p>
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(16,185,129,0.1),transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(59,130,246,0.1),transparent_50%)]" />
+      
+      {/* Navigation */}
+      <nav className="glass-effect border-b border-white/10 sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <button
+              onClick={() => navigate("/dashboard")}
+              className="flex items-center space-x-2 text-white hover:text-emerald-400 transition-colors"
+            >
+              <span className="text-xl">←</span>
+              <span className="font-medium">Dashboard</span>
+            </button>
+            <h1 className="text-2xl font-bold text-white flex items-center">
+              <span className="mr-3">🤝</span>
+              Volunteer Details
+            </h1>
+            <div className="w-20" />
           </div>
-        ))}
-      </div>
-      <div className="text-center mt-6">
-        <button onClick={() => navigate("/dashboard")} className="bg-yellow-500 text-white px-6 py-2 rounded-lg hover:bg-yellow-600 transition">
-          Back to Dashboard
-        </button>
+        </div>
+      </nav>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Statistics Overview */}
+        {!loading && volunteers.length > 0 && (
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <div className="glass-effect rounded-2xl p-6 text-center">
+              <div className="text-3xl font-bold text-emerald-400 mb-2">{volunteers.length}</div>
+              <div className="text-white/70 text-sm">Total Volunteers</div>
+            </div>
+            <div className="glass-effect rounded-2xl p-6 text-center">
+              <div className="text-3xl font-bold text-blue-400 mb-2">
+                {volunteers.filter(v => v.availability === 'Full-time').length}
+              </div>
+              <div className="text-white/70 text-sm">Full-time Available</div>
+            </div>
+            <div className="glass-effect rounded-2xl p-6 text-center">
+              <div className="text-3xl font-bold text-amber-400 mb-2">
+                {new Set(volunteers.flatMap(v => v.skills)).size}
+              </div>
+              <div className="text-white/70 text-sm">Unique Skills</div>
+            </div>
+            <div className="glass-effect rounded-2xl p-6 text-center">
+              <div className="text-3xl font-bold text-purple-400 mb-2">
+                {new Set(volunteers.map(v => v.state)).size}
+              </div>
+              <div className="text-white/70 text-sm">Locations</div>
+            </div>
+          </div>
+        )}
+        
+        {/* Search and Filter */}
+        {!loading && volunteers.length > 0 && (
+          <div className="glass-effect rounded-2xl p-6 mb-8">
+            <div className="flex flex-col md:flex-row gap-4">
+              <div className="flex-1">
+                <div className="relative">
+                  <input
+                    type="text"
+                    placeholder="Search volunteers by name, skills, or location..."
+                    className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent"
+                  />
+                  <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-white/50">
+                    🔍
+                  </div>
+                </div>
+              </div>
+              <select className="bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-emerald-400">
+                <option value="">All Availability</option>
+                <option value="full-time">Full-time</option>
+                <option value="part-time">Part-time</option>
+                <option value="weekends">Weekends</option>
+              </select>
+            </div>
+          </div>
+        )}
+
+        {loading && (
+          <div className="flex justify-center items-center py-12">
+            <div className="glass-effect rounded-3xl p-8 text-center">
+              <div className="animate-spin text-4xl mb-4">⏳</div>
+              <p className="text-white text-lg">Loading volunteers...</p>
+            </div>
+          </div>
+        )}
+        
+        {error && (
+          <div className="flex justify-center items-center py-12">
+            <div className="glass-effect rounded-3xl p-8 text-center border-l-4 border-red-400">
+              <div className="text-4xl mb-4">⚠️</div>
+              <p className="text-red-400 text-lg font-semibold">{error}</p>
+            </div>
+          </div>
+        )}
+        
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+          {volunteers.map((volunteer) => (
+            <div key={volunteer._id} className="glass-effect rounded-3xl p-6 shadow-2xl border border-white/10 card-hover group relative overflow-hidden">
+              {/* Gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              
+              {/* Header */}
+              <div className="relative z-10 mb-6">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-16 h-16 bg-gradient-to-br from-emerald-400 to-blue-500 rounded-2xl flex items-center justify-center text-2xl font-bold text-white shadow-lg">
+                    {(volunteer.name || volunteer.user.name).charAt(0).toUpperCase()}
+                  </div>
+                  <div className="text-right">
+                    <span className="bg-emerald-400/20 text-emerald-300 px-3 py-1 rounded-full text-xs font-semibold">
+                      Active
+                    </span>
+                  </div>
+                </div>
+                
+                <h3 className="text-xl font-bold text-white mb-1 group-hover:text-emerald-400 transition-colors">
+                  {volunteer.name || volunteer.user.name}
+                </h3>
+                <p className="text-white/60 text-sm">{volunteer.user.email}</p>
+              </div>
+              
+              {/* Contact Info */}
+              <div className="relative z-10 space-y-3 mb-6">
+                <div className="flex items-center space-x-3">
+                  <div className="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center">
+                    <span className="text-emerald-400 text-sm">📱</span>
+                  </div>
+                  <span className="text-white/80 text-sm">{volunteer.phone || "Phone not provided"}</span>
+                </div>
+                
+                <div className="flex items-center space-x-3">
+                  <div className="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center">
+                    <span className="text-emerald-400 text-sm">📍</span>
+                  </div>
+                  <span className="text-white/80 text-sm">
+                    {volunteer.state || "Location"}, {volunteer.district || "Unknown"}
+                  </span>
+                </div>
+              </div>
+              
+              {/* Skills */}
+              <div className="relative z-10 mb-6">
+                <h4 className="text-white/70 text-sm font-medium mb-3">Skills & Expertise</h4>
+                <div className="flex flex-wrap gap-2">
+                  {volunteer.skills.slice(0, 3).map((skill, index) => (
+                    <span key={index} className="bg-white/10 text-white px-3 py-1 rounded-lg text-xs font-medium border border-white/20">
+                      {skill}
+                    </span>
+                  ))}
+                  {volunteer.skills.length > 3 && (
+                    <span className="bg-emerald-400/20 text-emerald-300 px-3 py-1 rounded-lg text-xs font-medium">
+                      +{volunteer.skills.length - 3} more
+                    </span>
+                  )}
+                </div>
+              </div>
+              
+              {/* Availability */}
+              <div className="relative z-10 mb-6">
+                <div className="flex items-center justify-between">
+                  <span className="text-white/70 text-sm">Availability</span>
+                  <span className="bg-blue-400/20 text-blue-300 px-3 py-1 rounded-lg text-xs font-medium">
+                    {volunteer.availability}
+                  </span>
+                </div>
+              </div>
+              
+              {/* Action Buttons */}
+              <div className="relative z-10 flex space-x-3">
+                <button className="flex-1 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white py-2 px-4 rounded-xl text-sm font-semibold transition-all duration-200">
+                  Contact
+                </button>
+                <button className="bg-white/10 hover:bg-white/20 text-white py-2 px-4 rounded-xl text-sm font-medium transition-all duration-200 border border-white/20">
+                  View Profile
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        {volunteers.length === 0 && !loading && !error && (
+          <div className="flex justify-center items-center py-12">
+            <div className="glass-effect rounded-3xl p-8 text-center">
+              <div className="text-6xl mb-4">🔍</div>
+              <p className="text-white/70 text-lg">No volunteers found</p>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

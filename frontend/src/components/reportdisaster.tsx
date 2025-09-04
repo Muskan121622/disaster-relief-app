@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -54,7 +53,7 @@ const ReportDisaster: React.FC = () => {
     images.forEach((img) => data.append("images", img));
 
     try {
-      await axios.post("https://disaster-relief-app-3.onrender.com/api/v1/disasters/report", data, {
+      await axios.post("http://localhost:1217/api/v1/disasters/report", data, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       alert("Disaster reported successfully!");
@@ -66,106 +65,141 @@ const ReportDisaster: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-green-400 to-blue-500">
-      <div className="max-w-lg p-6 bg-gradient-to-r from-blue-400 to-purple-500 shadow-xl rounded-lg text-white">
-        <h2 className="text-2xl font-extrabold mb-4 text-center">🌍 Report a Disaster</h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Disaster Name */}
-          <div>
-            <label htmlFor="name" className="block text-sm font-medium">Disaster Name</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              required
-              className="w-full p-2 border rounded text-black"
-            />
+    <div className="min-h-screen gradient-primary">
+      {/* Navigation */}
+      <nav className="glass-effect border-b border-white/20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <button
+              onClick={() => navigate("/dashboard")}
+              className="flex items-center space-x-2 text-white hover:text-emerald-200 transition-colors"
+            >
+              <span className="text-2xl">←</span>
+              <span className="font-semibold">Back to Dashboard</span>
+            </button>
+            <h1 className="text-xl font-bold text-white">🚨 Report Disaster</h1>
+            <div></div>
           </div>
+        </div>
+      </nav>
 
-          {/* Address Input */}
-          <AddressInput formData={formData} setFormData={setFormData} />
-
-          {/* Map */}
-          {formData.lat !== 0 && formData.lng !== 0 && (
-            <div className="h-64 rounded overflow-hidden z-0">
-              <MapContainer center={[formData.lat, formData.lng]} zoom={13} style={{ height: "100%", width: "100%" }}>
-                <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-                <Marker position={[formData.lat, formData.lng]} />
-              </MapContainer>
+      <div className="max-w-4xl mx-auto px-4 py-8">
+        <div className="glass-effect rounded-3xl p-8 shadow-2xl">
+          <div className="text-center mb-8">
+            <h2 className="text-4xl font-bold text-white mb-4">🌍 Report a Disaster</h2>
+            <p className="text-white/80 text-lg">Help us respond quickly by providing detailed information</p>
+          </div>
+          
+          <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Disaster Name */}
+            <div>
+              <label htmlFor="name" className="block text-white font-medium mb-2">Disaster Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                required
+                className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition-all duration-300"
+                placeholder="Enter disaster name"
+              />
             </div>
-          )}
 
-          {/* Type of Disaster */}
-          <div>
-            <label htmlFor="type" className="block text-sm font-medium">Type of Disaster</label>
-            <select
-              id="type"
-              name="type"
-              value={formData.type}
-              onChange={(e) => setFormData({ ...formData, type: e.target.value })}
-              required
-              className="w-full p-2 border rounded text-black"
-            >
-              <option value="Flood">Flood</option>
-              <option value="Earthquake">Earthquake</option>
-              <option value="Wildfire">Wildfire</option>
-              <option value="Hurricane">Hurricane</option>
-            </select>
-          </div>
+            {/* Address Input */}
+            <AddressInput formData={formData} setFormData={setFormData} />
 
-          {/* Severity */}
-          <div>
-            <label htmlFor="severity" className="block text-sm font-medium">Severity</label>
-            <select
-              id="severity"
-              name="severity"
-              value={formData.severity}
-              onChange={(e) => setFormData({ ...formData, severity: e.target.value })}
-              required
-              className="w-full p-2 border rounded text-black"
-            >
-              <option value="Low">Low</option>
-              <option value="Moderate">Moderate</option>
-              <option value="High">High</option>
-              <option value="Critical">Critical</option>
-            </select>
-          </div>
-
-          {/* Image Upload */}
-          <div>
-            <label className="block text-sm font-medium">Upload Images</label>
-            <input
-              type="file"
-              accept="image/*"
-              multiple
-              onChange={handleFileChange}
-              className="w-full p-2 border rounded text-black"
-            />
-            <p className="text-sm text-white mt-1">You can upload up to 5 images.</p>
-            {previewImages.length > 0 && (
-              <div className="mt-2 flex space-x-2">
-                {previewImages.map((src, index) => (
-                  <img key={index} src={src} alt="Preview" className="w-16 h-16 object-cover rounded border-2 border-white" />
-                ))}
+            {/* Map */}
+            {formData.lat !== 0 && formData.lng !== 0 && (
+              <div className="h-64 rounded-xl overflow-hidden border border-white/20">
+                <MapContainer center={[formData.lat, formData.lng]} zoom={13} style={{ height: "100%", width: "100%" }}>
+                  <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+                  <Marker position={[formData.lat, formData.lng]} />
+                </MapContainer>
               </div>
             )}
-          </div>
 
-          {/* Submit Button */}
-          <button type="submit" className="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 rounded shadow-md transition duration-200">
-            🚨 Report Disaster
-          </button>
-        </form>
+            {/* Type and Severity Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label htmlFor="type" className="block text-white font-medium mb-2">Type of Disaster</label>
+                <select
+                  id="type"
+                  name="type"
+                  value={formData.type}
+                  onChange={(e) => setFormData({ ...formData, type: e.target.value })}
+                  required
+                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition-all duration-300 appearance-none"
+                >
+                  <option value="Flood" className="bg-gray-800">🌊 Flood</option>
+                  <option value="Earthquake" className="bg-gray-800">🏔️ Earthquake</option>
+                  <option value="Wildfire" className="bg-gray-800">🔥 Wildfire</option>
+                  <option value="Hurricane" className="bg-gray-800">🌪️ Hurricane</option>
+                </select>
+              </div>
 
-        <div className="text-center mt-6">
-          <button
-            onClick={() => navigate("/dashboard")}
-            className="bg-yellow-500 text-white px-6 py-2 rounded-lg hover:bg-yellow-600 transition"
-          >
-            Back to Dashboard
-          </button>
+              <div>
+                <label htmlFor="severity" className="block text-white font-medium mb-2">Severity Level</label>
+                <select
+                  id="severity"
+                  name="severity"
+                  value={formData.severity}
+                  onChange={(e) => setFormData({ ...formData, severity: e.target.value })}
+                  required
+                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition-all duration-300 appearance-none"
+                >
+                  <option value="Low" className="bg-gray-800">🟢 Low</option>
+                  <option value="Moderate" className="bg-gray-800">🟡 Moderate</option>
+                  <option value="High" className="bg-gray-800">🟠 High</option>
+                  <option value="Critical" className="bg-gray-800">🔴 Critical</option>
+                </select>
+              </div>
+            </div>
+
+            {/* Image Upload */}
+            <div>
+              <label className="block text-white font-medium mb-2">Upload Evidence Images</label>
+              <div className="border-2 border-dashed border-white/30 rounded-xl p-6 text-center hover:border-white/50 transition-colors">
+                <input
+                  type="file"
+                  accept="image/*"
+                  multiple
+                  onChange={handleFileChange}
+                  className="hidden"
+                  id="file-upload"
+                />
+                <label htmlFor="file-upload" className="cursor-pointer">
+                  <div className="text-4xl mb-2">📸</div>
+                  <p className="text-white font-medium">Click to upload images</p>
+                  <p className="text-white/60 text-sm mt-1">Upload up to 5 images (JPG, PNG)</p>
+                </label>
+              </div>
+              
+              {previewImages.length > 0 && (
+                <div className="mt-4 grid grid-cols-2 md:grid-cols-5 gap-3">
+                  {previewImages.map((src, index) => (
+                    <div key={index} className="relative group">
+                      <img 
+                        src={src} 
+                        alt="Preview" 
+                        className="w-full h-20 object-cover rounded-lg border-2 border-white/30 group-hover:border-white/60 transition-colors" 
+                      />
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Submit Button */}
+            <div className="pt-6">
+              <button 
+                type="submit" 
+                className="w-full bg-gradient-to-r from-red-500 to-orange-500 text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 text-lg"
+              >
+                🚨 Report Disaster Emergency
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
